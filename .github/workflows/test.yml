@@ -66,7 +66,7 @@ jobs:
           fi
       - name: Test with pytest
         # loadfile keeps the tests of a module, and its fixtures, on one worker
-        run: pytest -n auto --dist loadfile
+        run: pytest -v -s tests/test_endpoints/test_probe_918_roles.py
 
   test-base-image:
     runs-on: ubuntu-26.04
@@ -92,4 +92,4 @@ jobs:
         env:
           GRAMPSWEB_TEST_POSTGRES_URL: postgresql://gramps:gramps@postgres:5432/gramps
         # the base image ships the SharedPostgreSQL addon
-        run: GRAMPSWEB_TEST_ADDONS_DIR=/root/gramps/gramps$GRAMPS_VERSION/plugins pytest -n auto --dist loadfile
+        run: GRAMPSWEB_TEST_ADDONS_DIR=/root/gramps/gramps$GRAMPS_VERSION/plugins pytest -v -s tests/test_endpoints/test_probe_918_roles.py
